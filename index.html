@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>York Oracle — Under Construction</title>
+  <meta name="description" content="York Oracle school newspaper — site under construction." />
+  <meta name="theme-color" content="#C8102E" />
+  <style>
+    :root{
+      --oracle-red: #C8102E; /* York Oracle primary */
+      --oracle-red-600: #a40d25;
+      --ink: #111827;
+      --muted: #6B7280;
+      --paper: #F9FAFB;
+      --card: #FFFFFF;
+      --tape: repeating-linear-gradient(45deg, var(--oracle-red) 0 10px, #000 10px 20px);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--ink);
+      background: radial-gradient(1200px 800px at 50% -200px, #ffe5ea 0%, transparent 60%), var(--paper);
+    }
+    .container{
+      min-height: 100%;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+    .card{
+      width: 100%;
+      max-width: 780px;
+      background: var(--card);
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.06);
+      overflow: hidden;
+    }
+    .banner{
+      background: var(--tape);
+      height: 14px;
+      position: relative;
+    }
+    .brand{
+      padding: 1.25rem 1.5rem 0.5rem 1.5rem;
+    }
+    h1{
+      margin: 0;
+      font-size: clamp(1.25rem, 2.2vw + .5rem, 1.75rem);
+      letter-spacing: .5px;
+    }
+    .eyebrow{
+      font-size: .85rem; color: var(--muted); margin-top: 2px;
+    }
+    .content{
+      padding: 1rem 1.5rem 1.5rem 1.5rem;
+    }
+    .headline{
+      font-size: clamp(2rem, 6vw, 3rem);
+      line-height: 1.05;
+      margin: .75rem 0 1rem 0;
+      letter-spacing: .3px;
+    }
+    .headline strong { color: var(--oracle-red); text-shadow: 0 1px 0 rgba(200,16,46,.15); }
+    .lede{ color: #374151; font-size: clamp(1rem, 1.5vw + .5rem, 1.15rem); max-width: 60ch; }
+
+    .ticker{
+      margin-top: 1.25rem;
+      padding: .85rem 1rem;
+      border-radius: 12px;
+      background: #fff5f6;
+      border: 1px dashed var(--oracle-red);
+      font-size: .95rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--oracle-red); animation: pulse 1.2s infinite ease-in-out; }
+    @keyframes pulse { 0%, 100% { transform: scale(.9); opacity: .6;} 50% { transform: scale(1.15); opacity: 1; } }
+
+    footer{
+      margin-top: 1.5rem; padding: 1rem 1.5rem 1.5rem 1.5rem;
+      display: flex; justify-content: center; align-items: center;
+      color: var(--muted); font-size: .9rem;
+      border-top: 1px solid #f3f4f6;
+    }
+    .credits{ color: #6B7280; }
+    .credits b{ color: var(--ink); }
+
+    .ribbon{
+      position: absolute; top: 12px; right: -55px; transform: rotate(35deg);
+      background: var(--oracle-red); color: #fff; font-weight: 700; letter-spacing: .5px;
+      padding: .4rem 2.25rem; box-shadow: 0 6px 16px rgba(0,0,0,.2);
+      border-top-left-radius: 6px; border-top-right-radius: 6px;
+    }
+    .wrap{ position: relative; }
+
+    /* Accessibility prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      .dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main class="card">
+      <div class="banner"></div>
+      <div class="wrap">
+        <div class="ribbon" aria-hidden="true">UNDER CONSTRUCTION</div>
+        <header class="brand" aria-label="York Oracle">
+          <div>
+            <h1>York Oracle</h1>
+            <div class="eyebrow">The school newspaper</div>
+          </div>
+        </header>
+        <section class="content">
+          <h2 class="headline">Our new site is <strong>in the works</strong>.</h2>
+          <p class="lede">We’re rebuilding the York Oracle experience—cleaner layouts, faster pages, and better ways to follow campus stories. Thanks for your patience while we get everything just right.</p>
+          <div class="ticker" role="status" aria-live="polite">
+            <span class="dot" aria-hidden="true"></span>
+            <span>Site updates are ongoing. Check back here for the latest.</span>
+          </div>
+        </section>
+      </div>
+      <footer>
+        <span class="credits">© <span id="year"></span> York Oracle • Credits to <b>Veer Bajaj ’30</b></span>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Auto-year for footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
