@@ -100,6 +100,30 @@
     @media (prefers-reduced-motion: reduce) {
       .dot { animation: none; }
     }
+    
+    .header-slideshow {
+      position: relative;
+      width: 100%;
+      max-width: 612px;
+      height: 144px;
+      margin: 0 auto 1rem auto;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .header-slideshow img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .header-slideshow img.active {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
@@ -109,6 +133,12 @@
       <div class="wrap">
         <div class="ribbon" aria-hidden="true">UNDER CONSTRUCTION</div>
         <header class="brand" aria-label="York Oracle">
+          <div class="header-slideshow">
+            <img src="images/headers/1.png" alt="Header image 1" class="active">
+            <img src="images/headers/2.png" alt="Header image 2">
+            <img src="images/headers/3.png" alt="Header image 3">
+            <img src="images/headers/4.png" alt="Header image 4">
+          </div>
           <div>
             <h1>York Oracle</h1>
             <div class="eyebrow">The school newspaper</div>
@@ -132,6 +162,16 @@
   <script>
     // Auto-year for footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Header slideshow
+    const slideshowImages = document.querySelectorAll('.header-slideshow img');
+    let currentImageIndex = 0;
+
+    setInterval(() => {
+      slideshowImages[currentImageIndex].classList.remove('active');
+      currentImageIndex = (currentImageIndex + 1) % slideshowImages.length;
+      slideshowImages[currentImageIndex].classList.add('active');
+    }, 3000); // Change image every 3 seconds
   </script>
 </body>
 </html>
