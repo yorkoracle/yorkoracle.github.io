@@ -1,177 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>York Oracle — Under Construction</title>
-  <meta name="description" content="York Oracle school newspaper — site under construction." />
-  <meta name="theme-color" content="#C8102E" />
-  <style>
-    :root{
-      --oracle-red: #C8102E; /* York Oracle primary */
-      --oracle-red-600: #a40d25;
-      --ink: #111827;
-      --muted: #6B7280;
-      --paper: #F9FAFB;
-      --card: #FFFFFF;
-      --tape: repeating-linear-gradient(45deg, var(--oracle-red) 0 10px, #000 10px 20px);
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; }
-    body{
-      margin: 0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--ink);
-      background: radial-gradient(1200px 800px at 50% -200px, #ffe5ea 0%, transparent 60%), var(--paper);
-    }
-    .container{
-      min-height: 100%;
-      display: grid;
-      place-items: center;
-      padding: 2rem;
-    }
-    .card{
-      width: 100%;
-      max-width: 780px;
-      background: var(--card);
-      border: 1px solid #e5e7eb;
-      border-radius: 18px;
-      box-shadow: 0 10px 25px rgba(0,0,0,.06);
-      overflow: hidden;
-    }
-    .banner{
-      background: var(--tape);
-      height: 14px;
-      position: relative;
-    }
-    .brand{
-      padding: 1.25rem 1.5rem 0.5rem 1.5rem;
-    }
-    h1{
-      margin: 0;
-      font-size: clamp(1.25rem, 2.2vw + .5rem, 1.75rem);
-      letter-spacing: .5px;
-    }
-    .eyebrow{
-      font-size: .85rem; color: var(--muted); margin-top: 2px;
-    }
-    .content{
-      padding: 1rem 1.5rem 1.5rem 1.5rem;
-    }
-    .headline{
-      font-size: clamp(2rem, 6vw, 3rem);
-      line-height: 1.05;
-      margin: .75rem 0 1rem 0;
-      letter-spacing: .3px;
-    }
-    .headline strong { color: var(--oracle-red); text-shadow: 0 1px 0 rgba(200,16,46,.15); }
-    .lede{ color: #374151; font-size: clamp(1rem, 1.5vw + .5rem, 1.15rem); max-width: 60ch; }
-
-    .ticker{
-      margin-top: 1.25rem;
-      padding: .85rem 1rem;
-      border-radius: 12px;
-      background: #fff5f6;
-      border: 1px dashed var(--oracle-red);
-      font-size: .95rem;
-      display: flex; align-items: center; gap: .5rem;
-    }
-    .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--oracle-red); animation: pulse 1.2s infinite ease-in-out; }
-    @keyframes pulse { 0%, 100% { transform: scale(.9); opacity: .6;} 50% { transform: scale(1.15); opacity: 1; } }
-
-    footer{
-      margin-top: 1.5rem; padding: 1rem 1.5rem 1.5rem 1.5rem;
-      display: flex; justify-content: center; align-items: center;
-      color: var(--muted); font-size: .9rem;
-      border-top: 1px solid #f3f4f6;
-    }
-    .credits{ color: #6B7280; }
-    .credits b{ color: var(--ink); }
-
-    .ribbon{
-      position: absolute; top: 12px; right: -55px; transform: rotate(35deg);
-      background: var(--oracle-red); color: #fff; font-weight: 700; letter-spacing: .5px;
-      padding: .4rem 2.25rem; box-shadow: 0 6px 16px rgba(0,0,0,.2);
-      border-top-left-radius: 6px; border-top-right-radius: 6px;
-    }
-    .wrap{ position: relative; }
-
-    /* Accessibility prefers-reduced-motion */
-    @media (prefers-reduced-motion: reduce) {
-      .dot { animation: none; }
-    }
-    
-    .header-slideshow {
-      position: relative;
-      width: 100%;
-      max-width: 612px;
-      height: 144px;
-      margin: 0 auto 1rem auto;
-      overflow: hidden;
-      border-radius: 12px;
-    }
-
-    .header-slideshow img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-
-    .header-slideshow img.active {
-      opacity: 1;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>York Oracle — School Newspaper</title>
+  <meta name="description" content="York Oracle — current and past issues. Games, archive, and contact." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
-  <div class="container">
-    <main class="card">
-      <div class="banner"></div>
-      <div class="wrap">
-        <div class="ribbon" aria-hidden="true">UNDER CONSTRUCTION</div>
-        <header class="brand" aria-label="York Oracle">
-          <div class="header-slideshow">
-            <img src="images/headers/1.png" alt="Header image 1" class="active">
-            <img src="images/headers/2.png" alt="Header image 2">
-            <img src="images/headers/3.png" alt="Header image 3">
-            <img src="images/headers/4.png" alt="Header image 4">
-          </div>
-          <div>
-            <h1>York Oracle</h1>
-            <div class="eyebrow">The school newspaper</div>
-          </div>
-        </header>
-        <section class="content">
-          <h2 class="headline">Our new site is <strong>in the works</strong>.</h2>
-          <p class="lede">We’re rebuilding the York Oracle experience—cleaner layouts, faster pages, and better ways to follow campus stories. Thanks for your patience while we get everything just right.</p>
-          <div class="ticker" role="status" aria-live="polite">
-            <span class="dot" aria-hidden="true"></span>
-            <span>Site updates are ongoing. Check back here for the latest.</span>
-          </div>
-        </section>
+  <!-- Top navigation -->
+  <header class="site-header" role="banner">
+    <div class="topbar">
+      <a class="logo" href="/" aria-label="York Oracle Home">
+        <img src="images/headers/2.png" alt="York Oracle banner" class="banner-img" />
+      </a>
+
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">
+        <span class="hamburger"></span>
+      </button>
+
+      <nav id="primaryNav" class="primary-nav" role="navigation" aria-label="Primary">
+        <ul>
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#issues" class="nav-link">Issues</a></li>
+          <li><a class="nav-link games-btn" href="https://yrk.link/games" target="_blank" rel="noopener">Games</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <div class="hero-inner">
+        <h1 class="site-title">York Oracle</h1>
+        <p class="tagline">Student journalism — current & archived issues</p>
+        <p class="cta-row">
+          <a class="btn btn-primary" href="#issues">Browse issues</a>
+          <a class="btn btn-outline" href="https://yrk.link/games" target="_blank" rel="noopener">Play games</a>
+        </p>
       </div>
-      <footer>
-        <span class="credits">© <span id="year"></span> York Oracle • Credits to <b>Veer Bajaj ’30</b></span>
-      </footer>
-    </main>
-  </div>
+    </section>
 
-  <script>
-    // Auto-year for footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    <!-- Issues -->
+    <section id="issues" class="issues-section" aria-labelledby="issues-heading">
+      <div class="section-inner">
+        <h2 id="issues-heading">Issues — Current & Archive</h2>
+        <p class="lead">Click a cover to open the PDF. All PDFs are static files stored in <code>/pdfs</code>.</p>
 
-    // Header slideshow
-    const slideshowImages = document.querySelectorAll('.header-slideshow img');
-    let currentImageIndex = 0;
+        <!-- Filters / sort (static UI for now) -->
+        <div class="issues-controls" aria-hidden="true">
+          <div class="control">
+            <label for="yearSelect" class="sr-only">Filter by year</label>
+            <select id="yearSelect" disabled>
+              <option>All years</option>
+            </select>
+          </div>
+        </div>
 
-    setInterval(() => {
-      slideshowImages[currentImageIndex].classList.remove('active');
-      currentImageIndex = (currentImageIndex + 1) % slideshowImages.length;
-      slideshowImages[currentImageIndex].classList.add('active');
-    }, 3000); // Change image every 3 seconds
-  </script>
+        <!-- Grid of issue cards -->
+        <div id="issuesGrid" class="issues-grid" role="list">
+          <!-- Example card: duplicate and edit filenames/title/date -->
+          <article class="issue-card" role="listitem">
+            <a class="issue-link" href="pdfs/2025-09-fall.pdf" target="_blank" rel="noopener">
+              <div class="thumb" data-pdf="pdfs/2025-09-fall.pdf" aria-hidden="true">
+                <!-- JS will replace with thumbnail image or embed fallback -->
+                <img data-src="pdfs/2025-09-fall-thumb.jpg" alt="" class="lazy-img" />
+              </div>
+              <div class="issue-meta">
+                <h3 class="issue-title">Fall 2025</h3>
+                <time datetime="2025-09-01" class="issue-date">September 2025</time>
+                <p class="issue-excerpt">Highlights: back-to-school features, student profiles, sports recap.</p>
+              </div>
+            </a>
+          </article>
+
+          <article class="issue-card" role="listitem">
+            <a class="issue-link" href="pdfs/2025-06-summer.pdf" target="_blank" rel="noopener">
+              <div class="thumb" data-pdf="pdfs/2025-06-summer.pdf" aria-hidden="true">
+                <img data-src="pdfs/2025-06-summer-thumb.jpg" alt="" class="lazy-img" />
+              </div>
+              <div class="issue-meta">
+                <h3 class="issue-title">Summer 2025</h3>
+                <time datetime="2025-06-15" class="issue-date">June 2025</time>
+                <p class="issue-excerpt">Graduation coverage, summer programs, student artwork.</p>
+              </div>
+            </a>
+          </article>
+
+          <!-- Add more articles similar to above for each PDF file in /pdfs -->
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about-section" aria-labelledby="about-heading">
+      <div class="section-inner">
+        <h2 id="about-heading">About York Oracle</h2>
+        <p>York Oracle is the official student newspaper of York School. We publish quarterly and archive past issues here for students, parents, and staff.</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact-section" aria-labelledby="contact-heading">
+      <div class="section-inner">
+        <h2 id="contact-heading">Contact</h2>
+        <p>Questions or submissions? Email the editorial team at <a href="mailto:editor@yorkoracle.example">editor@yorkoracle.example</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p>© <span id="year"></span> York Oracle — All rights reserved.</p>
+      <p class="footer-links">
+        <a href="#privacy">Privacy</a> · <a href="#terms">Terms</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="scripts.js"></script>
 </body>
 </html>
