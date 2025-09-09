@@ -1,78 +1,76 @@
-// scripts.js
-(function(){
-  // Set copyright year
-  document.getElementById('year').textContent = new Date().getFullYear();
+(async function() {
+  'use strict';
 
-  // Mobile nav toggle
-  const navToggle = document.getElementById('navToggle');
-  const primaryNav = document.getElementById('primaryNav');
+  // --- Configuration ---
+  const issues = [
+    { issue: '2025-09-fall', title: 'Fall 2025', date: '2025-09-01', excerpt: 'Highlights: back-to-school features, student profiles, sports recap.' },
+    { issue: '2025-06-summer', title: 'Summer 2025', date: '2025-06-15', excerpt: 'Graduation coverage, summer programs, student artwork.' }
+    // Add more issue objects here
+  ];
 
-  navToggle.addEventListener('click', function(){
-    const expanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', String(!expanded));
-    primaryNav.classList.toggle('open');
-    // Update label
-    this.setAttribute('aria-label', expanded ? 'Open menu' : 'Close menu');
-  });
-
-  // Close nav on Escape
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && primaryNav.classList.contains('open')){
-      primaryNav.classList.remove('open');
-      navToggle.setAttribute('aria-expanded','false');
-      navToggle.setAttribute('aria-label','Open menu');
-      navToggle.focus();
+  // --- Functions ---
+  function setCopyrightYear() {
+    const yearEl = document.getElementById('year');
+    if (yearEl) {
+      yearEl.textContent = new Date().getFullYear();
     }
-  });
+  }
 
-  // Keyboard: allow Enter on .issue-card to open link
-  document.querySelectorAll('.issue-card').forEach(card => {
-    card.tabIndex = 0; // make focusable
-    card.addEventListener('keypress', (e) => {
-      if(e.key === 'Enter' || e.key === ' '){
-        const link = card.querySelector('.issue-link');
-        if(link) link.click();
-      }
+  function setupMobileNav() {
+    const navToggle = document.getElementById('navToggle');
+    const primaryNav = document.getElementById('primaryNav');
+
+    if (!navToggle || !primaryNav) return;
+
+    navToggle.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !isExpanded);
+      primaryNav.classList.toggle('open');
     });
-  });
 
-  // Simple lazy loader for thumbnail images (uses data-src)
-  const lazyImgs = document.querySelectorAll('.lazy-img');
-  if('IntersectionObserver' in window){
-    const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          const img = entry.target;
-          const src = img.getAttribute('data-src');
-          if(src){
-            img.src = src;
-            img.removeAttribute('data-src');
-          }
-          obs.unobserve(img);
-        }
-      });
-    }, {rootMargin: "200px"});
-    lazyImgs.forEach(i => io.observe(i));
-  } else {
-    // Fallback: load immediately
-    lazyImgs.forEach(img => {
-      const src = img.getAttribute('data-src');
-      if(src) img.src = src;
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && primaryNav.classList.contains('open')) {
+        primaryNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.focus();
+      }
     });
   }
 
-  // Accessibility: focus main on "Browse issues" click
-  document.querySelectorAll('.btn-primary, .nav-link').forEach(el => {
-    el.addEventListener('click', function(e){
-      const href = (this.getAttribute('href') || '');
-      if(href.startsWith('#')){
-        const id = href.slice(1);
-        const target = document.getElementById(id);
-        if(target){
-          setTimeout(()=> target.querySelector('h2, h1')?.focus?.(), 250);
-        }
-      }
-    });
+  function createIssueCard(issue) {
+    const pdfPath = `pdfs/${issue.issue}.pdf`;
+    const thumbPath = `pdfs/${issue.issue}-thumb.jpg`;
+
+    return `
+      <article class="issue-card" role="listitem">
+        <a class="issue-link" href="${pdfPath}" target="_blank" rel="noopener">
+          <div class="thumb" aria-hidden="true">
+            <img src="${thumbPath}" alt="Cover for ${issue.title}" loading="lazy" />
+          </div>
+          <div class="issue-meta">
+            <h3 class="issue-title">${issue.title}</h3>
+            <time datetime="${issue.date}" class="issue-date">${new Date(issue.date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</time>
+            <p class="issue-excerpt">${issue.excerpt}</p>
+          </div>
+        </a>
+      </article>
+    `;
+  }
+
+  async function loadIssues() {
+    const grid = document.getElementById('issuesGrid');
+    if (!grid) return;
+
+    // In a real application, you might fetch this data from a JSON file
+    // For now, we'll use the 'issues' array defined at the top
+    grid.innerHTML = issues.map(createIssueCard).join('');
+  }
+
+  // --- Initial execution ---
+  document.addEventListener('DOMContentLoaded', () => {
+    setCopyrightYear();
+    setupMobileNav();
+    loadIssues();
   });
 
 })();
