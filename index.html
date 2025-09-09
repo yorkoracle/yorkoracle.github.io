@@ -9,7 +9,6 @@
   <link rel="icon" href="favicon.ico" />
 </head>
 <body>
-  <!-- Top navigation -->
   <header class="site-header" role="banner">
     <div class="topbar">
       <a class="logo" href="/" aria-label="York Oracle Home">
@@ -33,10 +32,9 @@
   </header>
 
   <main id="main" tabindex="-1">
-    <!-- Hero -->
     <section id="home" class="hero">
       <div class="hero-inner">
-        <h1 class="site-title">York Oracle</h1>
+        <h1 class="site-title">The York Oracle</h1>
         <p class="tagline">Student journalism — current & archived issues</p>
         <p class="cta-row">
           <a class="btn btn-primary" href="#issues">Browse issues</a>
@@ -45,77 +43,34 @@
       </div>
     </section>
 
-    <!-- Issues -->
     <section id="issues" class="issues-section" aria-labelledby="issues-heading">
       <div class="section-inner">
         <h2 id="issues-heading">Issues — Current & Archive</h2>
         <p class="lead">Click a cover to open the PDF. All PDFs are static files stored in <code>/pdfs</code>.</p>
 
-        <!-- Filters / sort (static UI for now) -->
-        <div class="issues-controls" aria-hidden="true">
-          <div class="control">
-            <label for="yearSelect" class="sr-only">Filter by year</label>
-            <select id="yearSelect" disabled>
-              <option>All years</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- Grid of issue cards -->
         <div id="issuesGrid" class="issues-grid" role="list">
-          <!-- Example card: duplicate and edit filenames/title/date -->
-          <article class="issue-card" role="listitem">
-            <a class="issue-link" href="pdfs/2025-09-fall.pdf" target="_blank" rel="noopener">
-              <div class="thumb" data-pdf="pdfs/2025-09-fall.pdf" aria-hidden="true">
-                <!-- JS will replace with thumbnail image or embed fallback -->
-                <img data-src="pdfs/2025-09-fall-thumb.jpg" alt="" class="lazy-img" />
-              </div>
-              <div class="issue-meta">
-                <h3 class="issue-title">Fall 2025</h3>
-                <time datetime="2025-09-01" class="issue-date">September 2025</time>
-                <p class="issue-excerpt">Highlights: back-to-school features, student profiles, sports recap.</p>
-              </div>
-            </a>
-          </article>
-
-          <article class="issue-card" role="listitem">
-            <a class="issue-link" href="pdfs/2025-06-summer.pdf" target="_blank" rel="noopener">
-              <div class="thumb" data-pdf="pdfs/2025-06-summer.pdf" aria-hidden="true">
-                <img data-src="pdfs/2025-06-summer-thumb.jpg" alt="" class="lazy-img" />
-              </div>
-              <div class="issue-meta">
-                <h3 class="issue-title">Summer 2025</h3>
-                <time datetime="2025-06-15" class="issue-date">June 2025</time>
-                <p class="issue-excerpt">Graduation coverage, summer programs, student artwork.</p>
-              </div>
-            </a>
-          </article>
-
-          <!-- Add more articles similar to above for each PDF file in /pdfs -->
-        </div>
+          </div>
       </div>
     </section>
 
-    <!-- About -->
     <section id="about" class="about-section" aria-labelledby="about-heading">
       <div class="section-inner">
-        <h2 id="about-heading">About York Oracle</h2>
-        <p>York Oracle is the official student newspaper of York School. We publish quarterly and archive past issues here for students, parents, and staff.</p>
+        <h2 id="about-heading">About The York Oracle</h2>
+        <p>The York Oracle is the official student newspaper of York School. We publish quarterly and archive past issues here for students, parents, and staff.</p>
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact" class="contact-section" aria-labelledby="contact-heading">
       <div class="section-inner">
         <h2 id="contact-heading">Contact</h2>
-        <p>Questions or submissions? Email the editorial team at <a href="mailto:editor@yorkoracle.example">editor@yorkoracle.example</a>.</p>
+        <p>Questions or submissions? Email the editorial team at <a href="mailto:oracle.games@york.org">oracle.games@york.org</a>.</p>
       </div>
     </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
-      <p>© <span id="year"></span> York Oracle — All rights reserved.</p>
+      <p>© <span id="year"></span> The York Oracle — All rights reserved.</p>
       <p class="footer-links">
         <a href="#privacy">Privacy</a> · <a href="#terms">Terms</a>
       </p>
