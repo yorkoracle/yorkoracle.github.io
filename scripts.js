@@ -12,6 +12,12 @@
     // Add more issue objects here
   ];
 
+// --- DOM Elements ---
+  const pdfViewer = document.getElementById('pdfViewer');
+  const pdfFrame = document.getElementById('pdfFrame');
+  const closePdfBtn = document.getElementById('closePdfBtn');
+  const issuesGrid = document.getElementById('issuesGrid');
+
   // --- Functions ---
   function setCopyrightYear() {
     const yearEl = document.getElementById('year');
@@ -23,7 +29,6 @@
   function setupMobileNav() {
     const navToggle = document.getElementById('navToggle');
     const primaryNav = document.getElementById('primaryNav');
-
     if (!navToggle || !primaryNav) return;
 
     navToggle.addEventListener('click', function() {
@@ -41,39 +46,79 @@
     });
   }
 
+  function showPdf(pdfPath) {
+    if (!pdfViewer || !pdfFrame) return;
+    pdfFrame.src = pdfPath;
+    pdfViewer.classList.add('visible');
+    pdfViewer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+
+  function hidePdf() {
+    if (!pdfViewer || !pdfFrame) return;
+    pdfFrame.src = ''; // Clear the src to stop loading
+    pdfViewer.classList.remove('visible');
+    pdfViewer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = ''; // Restore scrolling
+  }
+
+  function setupPdfViewer() {
+    if (!pdfViewer || !closePdfBtn) return;
+    closePdfBtn.addEventListener('click', hidePdf);
+
+    // Close with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && pdfViewer.classList.contains('visible')) {
+        hidePdf();
+      }
+    });
+
+    // Close by clicking background
+    pdfViewer.addEventListener('click', (e) => {
+      if (e.target === pdfViewer) {
+        hidePdf();
+      }
+    });
+  }
+
   function createIssueCard(issue) {
     const pdfPath = `pdfs/${issue.issue}.pdf`;
-    const thumbPath = `pdfs/${issue.issue}-thumb.jpg`;
 
     return `
       <article class="issue-card" role="listitem">
-        <a class="issue-link" href="${pdfPath}" target="_blank" rel="noopener">
-          <div class="thumb" aria-hidden="true">
-            <img src="${thumbPath}" alt="Cover for ${issue.title}" loading="lazy" />
-          </div>
+        <button class="issue-link" data-pdf-path="${pdfPath}">
           <div class="issue-meta">
             <h3 class="issue-title">${issue.title}</h3>
             <time datetime="${issue.date}" class="issue-date">${new Date(issue.date).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</time>
             <p class="issue-excerpt">${issue.excerpt}</p>
           </div>
-        </a>
+        </button>
       </article>
     `;
   }
 
   async function loadIssues() {
-    const grid = document.getElementById('issuesGrid');
-    if (!grid) return;
+    if (!issuesGrid) return;
 
-    // In a real application, you might fetch this data from a JSON file
-    // For now, we'll use the 'issues' array defined at the top
-    grid.innerHTML = issues.map(createIssueCard).join('');
+    issuesGrid.innerHTML = issues.map(createIssueCard).join('');
+
+    // Add event listeners to the new buttons
+    const issueLinks = issuesGrid.querySelectorAll('.issue-link');
+    issueLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        const pdfPath = link.dataset.pdfPath;
+        if (pdfPath) {
+          showPdf(pdfPath);
+        }
+      });
+    });
   }
 
   // --- Initial execution ---
   document.addEventListener('DOMContentLoaded', () => {
     setCopyrightYear();
     setupMobileNav();
+    setupPdfViewer();
     loadIssues();
   });
 
