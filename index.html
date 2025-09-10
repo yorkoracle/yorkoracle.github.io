@@ -46,7 +46,7 @@
     <section id="issues" class="issues-section" aria-labelledby="issues-heading">
       <div class="section-inner">
         <h2 id="issues-heading">Issues — Current & Archive</h2>
-        <p class="lead">Click a cover to open the PDF. All PDFs are static files stored in <code>/pdfs</code>.</p>
+        <p class="lead">Click an issue to open the PDF.</p>
 
         <div id="issuesGrid" class="issues-grid" role="list">
           </div>
@@ -67,6 +67,11 @@
       </div>
     </section>
   </main>
+
+  <div id="pdfViewer" class="pdf-viewer" aria-hidden="true">
+    <button id="closePdfBtn" class="close-pdf-btn" aria-label="Close PDF viewer">&times;</button>
+    <iframe id="pdfFrame" class="pdf-iframe" title="PDF viewer" frameborder="0"></iframe>
+  </div>
 
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
