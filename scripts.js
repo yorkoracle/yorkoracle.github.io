@@ -26,26 +26,6 @@
     }
   }
 
-  function setupMobileNav() {
-    const navToggle = document.getElementById('navToggle');
-    const primaryNav = document.getElementById('primaryNav');
-    if (!navToggle || !primaryNav) return;
-
-    navToggle.addEventListener('click', function() {
-      const isExpanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', !isExpanded);
-      primaryNav.classList.toggle('open');
-    });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && primaryNav.classList.contains('open')) {
-        primaryNav.classList.remove('open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        navToggle.focus();
-      }
-    });
-  }
-
   function showPdf(pdfPath) {
     if (!pdfViewer || !pdfFrame) return;
     pdfFrame.src = pdfPath;
@@ -117,7 +97,6 @@
   // --- Initial execution ---
   document.addEventListener('DOMContentLoaded', () => {
     setCopyrightYear();
-    setupMobileNav();
     setupPdfViewer();
     loadIssues();
   });
