@@ -5,10 +5,10 @@
   // --- Configuration ---
   const issues = [
     { issue: 'v3-i1', title: 'Vol 3, Issue 1', date: '2025-10-01', excerpt: 'Coming soon! Check back for the latest issue.' },
-    { issue: 'v2-i2', title: 'Vol 2, Issue 2', date: '2025-05-01', excerpt: 'Highlights from the end of the year, student achievements, and more.' },
+    { issue: 'v2-i2', title: 'Vol 2, Issue 2', date: '2025-05-01', excerpt: 'Fun games, information, and awesome news.' },
     { issue: 'v2-i1', title: 'Vol 2, Issue 1', date: '2024-12-01', excerpt: 'Kicking off the new school year with exciting stories and features.' },
-    { issue: 'v1-i2', title: 'Vol 1, Issue 2', date: '2023-05-01', excerpt: 'A look back at the spring semester, with special graduation coverage.' },
-    { issue: 'v1-i1', title: 'Vol 1, Issue 1', date: '2023-12-01', excerpt: 'The very first issue! Read about the launch of the newspaper and more.' }
+    { issue: 'v1-i2', title: 'Vol 1, Issue 2', date: '2023-05-01', excerpt: 'Currently unavailable.' },
+    { issue: 'v1-i1', title: 'Vol 1, Issue 1', date: '2023-12-01', excerpt: 'The very first issue! Read about the relaunch of the newspaper and more.' }
     // Add more issue objects here
   ];
 
