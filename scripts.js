@@ -4,7 +4,7 @@
   // --- Configuration ---
   // --- Configuration ---
   const issues = [
-    { issue: 'v3-i1', title: 'Vol 3, Issue 1 (DEV)', date: '2025-10-01', excerpt: 'Coming soon! Check back for the latest issue.', hidden: true },
+    { issue: 'v3-i1', title: 'Vol 3, Issue 1 (DEV)', date: '2025-10-01', excerpt: 'The bird is back, new faculty, and more!'},
     { issue: 'v2-i2', title: 'Vol 2, Issue 2', date: '2025-05-01', excerpt: 'Fun games, information, and awesome news.' },
     { issue: 'v2-i1', title: 'Vol 2, Issue 1', date: '2024-12-01', excerpt: 'Kicking off the new school year with exciting stories and features.' },
     { issue: 'v1-i2', title: 'Vol 1, Issue 2', date: '2023-05-01', excerpt: 'Currently unavailable.' },
