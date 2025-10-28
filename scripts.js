@@ -4,7 +4,7 @@
   // --- Configuration ---
   // --- Configuration ---
   const issues = [
-    { issue: 'v3-i1', title: 'Vol 3, Issue 1', date: '2025-10-01', excerpt: 'Coming soon! Check back for the latest issue.' },
+    { issue: 'v3-i1', title: 'Vol 3, Issue 1 (DEV)', date: '2025-10-01', excerpt: 'Coming soon! Check back for the latest issue.', hidden: true },
     { issue: 'v2-i2', title: 'Vol 2, Issue 2', date: '2025-05-01', excerpt: 'Fun games, information, and awesome news.' },
     { issue: 'v2-i1', title: 'Vol 2, Issue 1', date: '2024-12-01', excerpt: 'Kicking off the new school year with exciting stories and features.' },
     { issue: 'v1-i2', title: 'Vol 1, Issue 2', date: '2023-05-01', excerpt: 'Currently unavailable.' },
@@ -77,10 +77,13 @@
     `;
   }
 
-  async function loadIssues() {
+  async function loadIssues(showHidden = false) {
     if (!issuesGrid) return;
 
-    issuesGrid.innerHTML = issues.map(createIssueCard).join('');
+    // Filter out hidden issues unless showHidden is true
+    const issuesToLoad = showHidden ? issues : issues.filter(issue => !issue.hidden);
+
+    issuesGrid.innerHTML = issuesToLoad.map(createIssueCard).join('');
 
     // Add event listeners to the new buttons
     const issueLinks = issuesGrid.querySelectorAll('.issue-link');
@@ -98,7 +101,41 @@
   document.addEventListener('DOMContentLoaded', () => {
     setCopyrightYear();
     setupPdfViewer();
-    loadIssues();
+    loadIssues(false); // Load issues, hiding hidden ones by default
+
+    // --- Dev Trigger Logic ---
+    const termsLink = document.getElementById('terms-link');
+    let devSequence = "";
+    let termsClicked = false;
+    const secretCode = "dev";
+
+    if (termsLink) {
+      termsLink.addEventListener('click', (e) => {
+        e.preventDefault(); // Stop the link from navigating to #terms
+        termsClicked = true;
+        devSequence = ""; // Reset sequence on click
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (termsClicked) {
+        devSequence += e.key.toLowerCase();
+        
+        // If the sequence is wrong, reset
+        if (!secretCode.startsWith(devSequence)) {
+          devSequence = "";
+          termsClicked = false; // Reset the click state too
+        }
+        
+        // If the sequence is correct
+        if (devSequence === secretCode) {
+          loadIssues(true); // Reload the issues, showing hidden ones
+          devSequence = "";
+          termsClicked = false;
+        }
+      }
+    });
+    // --- End Dev Trigger Logic ---
   });
 
 })();
